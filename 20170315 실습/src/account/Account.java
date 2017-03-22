@@ -1,33 +1,31 @@
 package account;
 
 public class Account{
-	private double money;
+	private double balance;
 	
-	public final String name;
+	protected void setBalance(double x){
+		balance =x;
+	}
 		
-	public Account(String name)
+	public Account(double balance)
 	{
-		this.name=name;
+		this.balance=balance;
 	}
 		
 	public void credit(double x){
-		money += x;
+		balance += x;
 	};
 		
 	public void debit(double x){
-		if (money<x){
-			money=0;
-		}else{
-			money -= x;
-		}
+		balance -= x;
 	};
 	
-	public double getmoney(){
-		return money;
+	public double getBalance(){
+		return balance;
 		
 	}
-	public void balance(){
-		System.out.printf("%s balance: $%1f\n",name,getmoney());
+	public void checkbalance(){
+		System.out.printf("'s balance: $%1f\n",getBalance());
 	};
 	
 		
