@@ -20,7 +20,7 @@ public class CheckingAccount extends Account {
 		}
 	};
 
-	public void getCreditlimit(float x){
+	public void getCreditlimit(double x){
 		credit_limit=x;
 	}
 	
