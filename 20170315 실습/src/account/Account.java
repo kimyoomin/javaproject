@@ -1,7 +1,8 @@
 package account;
 
-public class Account{
+public abstract class Account{
 	private double balance;
+	public int passMonth;
 	
 	protected void setBalance(double x){
 		balance =x;
@@ -28,6 +29,8 @@ public class Account{
 		System.out.printf("'s balance: $%1f\n",getBalance());
 	};
 	
-		
-}	
+	public abstract double getWithdrawableAccount();
+	
+	public abstract void passTime(int x);	
 
+}
