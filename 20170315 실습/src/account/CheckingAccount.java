@@ -14,12 +14,10 @@ public class CheckingAccount extends Account {
 	};
 	
 	
-	@Override public void debit(double x){
-		//if (getBalance()-x<-creditLimit){
-			//System.out.println("You can't withdrawal in this account.");
-		//}else{
+	@Override public void debit(double x) throws Exception{
+		if (getBalance()-x<-creditLimit) throw new Exception("Over credit");
+		if(x<0) throw new Exception("Input minus");
 		setBalance(getBalance()-x);
-		//}
 	};
 
 	public void getCreditlimit(double x){
@@ -45,7 +43,7 @@ public class CheckingAccount extends Account {
 	}
 	
 	@Override 
-	public double getWithdrawableAccount(){
+	public double getWithdrawableAmount(){
 		if(getBalance() + creditLimit>=0){
 			return getBalance() + creditLimit;
 		}else{
@@ -60,4 +58,12 @@ public class CheckingAccount extends Account {
 		}
 	}
 
+	@Override public double EstimateValue(int month){
+		passTime(month);
+		return getBalance();
+	}
+	
+	@Override public String toString(){
+		return String.format("CheckingAccount_Balance: %.2f", getBalance());
+	}
 }
