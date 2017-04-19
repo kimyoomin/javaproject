@@ -35,7 +35,9 @@ public abstract class Account implements Valuable{
 	
 	public abstract double getWithdrawableAmount();
 	
-	public abstract void passTime(int x);	
+	public abstract void passTime(int x);
+	
+	public abstract void passTime();
 	
 	
 

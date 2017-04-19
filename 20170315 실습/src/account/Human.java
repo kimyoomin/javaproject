@@ -11,8 +11,12 @@ public class Human implements Valuable {
 		return age;
 	}
 	
-	@Override public double EstimateValue(int month){
+	@Override public double estimateValue(int month){
 		return Double.POSITIVE_INFINITY;
+	}
+	
+	@Override public double estimateValue(){
+		return estimateValue(1);
 	}
 	
 	@Override public String toString(){

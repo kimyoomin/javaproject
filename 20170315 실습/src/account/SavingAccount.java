@@ -20,9 +20,9 @@ public class SavingAccount extends Account{
 	}
 	@Override
 	public void debit(double x) throws Exception{
+		if(passMonth<12) throw new Exception("아짃 출금할 수 없습니다.");
 		if(getBalance()-x<0) throw new Exception("Over credit");
 		if(x<0) throw new Exception("Input minus");
-		if(passMonth<12) throw new Exception("아짃 출금할 수 없습니다.");
 		//{
 			//System.out.println("아직 출금할 수 없습니다.");
 		//}else{
@@ -44,6 +44,12 @@ public class SavingAccount extends Account{
 		}else{
 		}
 	}
+	
+	@Override 
+	public void passTime(){
+		passTime(1);
+	}
+			
 	@Override 
 	public double getWithdrawableAmount(){
 		if(getBalance()>=0){
@@ -53,11 +59,13 @@ public class SavingAccount extends Account{
 		}
 	}
 	
-	@Override public double EstimateValue(int month){
+	@Override public double estimateValue(int month){
 		passTime(month);
 		return firstBalance*Math.pow((1+interest),passMonth);
 	}
-	
+	@Override public double estimateValue(){
+		return estimateValue(1);
+	}
 	@Override public String toString(){
 		return String.format("SavingAccount_Balance: %.2f", getBalance());
 	}

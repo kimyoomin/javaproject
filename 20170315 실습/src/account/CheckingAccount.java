@@ -57,10 +57,19 @@ public class CheckingAccount extends Account {
 			nextMonth();
 		}
 	}
+	
+	@Override
+	public void passTime(){
+		passTime(1);
+	}
 
-	@Override public double EstimateValue(int month){
+	@Override public double estimateValue(int month){
 		passTime(month);
 		return getBalance();
+	}
+	
+	@Override public double estimateValue(){
+		return estimateValue(1);
 	}
 	
 	@Override public String toString(){
