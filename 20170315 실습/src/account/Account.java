@@ -1,5 +1,7 @@
 package account;
 
+import java.util.ArrayList;
+
 public abstract class Account implements Valuable{
 	private double balance;
 	private String name;
@@ -32,6 +34,20 @@ public abstract class Account implements Valuable{
 	public void checkbalance(){
 		System.out.printf("'s balance: $%1f\n",getBalance());
 	};
+	
+	public static double sumForAccount(ArrayList <? extends Account > list){
+		double sum=0;
+		for(Account account : list){
+			sum+=account.getBalance();
+		}
+		return sum;
+	}
+	
+	public static void passTimeForList(ArrayList <? extends Account > list,int month){
+		for(Account account : list){
+			account.passTime(month);
+		}
+	}
 	
 	public abstract double getWithdrawableAmount();
 	
